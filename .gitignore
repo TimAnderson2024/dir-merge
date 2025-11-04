@@ -5,3 +5,4 @@ temp_clone/
 testing/real_dirs/
 diff.txt
 out.txt
+venv/
