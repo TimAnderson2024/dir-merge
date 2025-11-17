@@ -61,14 +61,24 @@ class File:
         # Assign comparison type
         for comp_type in CompType:
             traits = comp_type.value
+            print("Comparing traits:", same_path, same_name, same_content)
             if (
                 traits["path"] == same_path
                 and traits["name"] == same_name
                 and traits["content"] == same_content
             ):
-                return Comparison(self, other, comp_type)
+                comparison = Comparison(self, other, comp_type)
+
+                # Skip path dups
+                if comparison.comp_type is CompType.PATH_DUP:
+                    return None
+                else: 
+                    return comparison
+
+
+            
         raise ValueError(
-            f"No valid CompType found for comparison between {repr(self)} and {repr(other)}"
+            f"No valid CompType found for comparison between {repr(self)} and {repr(other)}:\n same_name={same_path}, same_path={same_name}, same_content={same_content}"
         )
 
     def compare_content(self, other: "File"):

@@ -17,6 +17,8 @@ class Comparison:
         NAME_DUP = {"path": False, "name": True, "content": False}
         # Same content, different name and path
         CONTENT_DUP = {"path": False, "name": False, "content": True}
+        # Same path, different name and content
+        PATH_DUP = {"path": True, "name": False, "content": False}
 
         # No shared traits
         UNIQUE = {"path": False, "name": False, "content": False}

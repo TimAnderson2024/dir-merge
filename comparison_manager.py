@@ -72,7 +72,8 @@ class ComparisonManager:
                 or self.comparison_cache.get((self, other_file))
             ):
                 new_comparison = file.compare_to(other_file)
-                comparisons.append(new_comparison)
+                if new_comparison:
+                    comparisons.append(new_comparison)
 
         return comparisons
 
